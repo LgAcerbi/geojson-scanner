@@ -26,6 +26,7 @@ module.exports = {
             ]
         ]
     },
+
     polygonWithoutLoop: {
         type: "Polygon",
         coordinates: [
@@ -50,6 +51,21 @@ module.exports = {
                     -28.564453125,
                     -14.519780046326085
                 ]
+            ]
+        ]
+    },
+
+    polygonWithInvalidCoordinates: {
+        type: "Polygon",
+        coordinates: []
+    },
+
+    polygonWithInvalidCoordinatesQuantity: {
+        type: "Polygon",
+        coordinates: [
+            [
+                [1, 1],
+                [1, 1]
             ]
         ]
     }
