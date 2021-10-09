@@ -1,7 +1,9 @@
-const { checkIntersectionBetweenLines } = require('./helpers/geomath')
+const GeoJsonValidations = require('./helpers/geojson-validations')
+const { checkIntersectionBetweenLines } = require('./helpers/geo-math')
 
 class GeoJsonScanner {
     static polygonLoop(polygon) {
+        GeoJsonValidations.isValidPolygon(polygon)
         const foundLoop = polygon.coordinates[0].some((coordinate, index) => {
             if (polygon.coordinates[0][index + 3] !== undefined) {
                 const line1 = {
