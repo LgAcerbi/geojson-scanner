@@ -1,6 +1,6 @@
 {
   "name": "geojson-scanner",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Library to scan possible issues in a GeoJson",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,10 @@
     "geojson",
     "2dsphere"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LgAcerbi/geojson-scanner"
+  },
   "author": "Luiz Guilherme dos Santos Acerbi",
   "license": "ISC",
   "devDependencies": {
