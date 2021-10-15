@@ -2,7 +2,7 @@ const GeoJsonScanner = require('../src/geojson-scanner')
 const polygonsMock = require('./mocks/polygons')
 
 describe('GeoJson Scanner tests', () => {
-    describe('Scann loop in a polygon tests', () => {
+    describe('Scan loop in a polygon tests', () => {
         test('should return true, to a polygon with loop', () => {
             expect(GeoJsonScanner.polygonLoop(polygonsMock.polygonWithLoop)).toBe(true)
         })
