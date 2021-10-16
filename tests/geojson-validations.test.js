@@ -2,6 +2,7 @@ const GeoJsonValidations = require('../src/helpers/geojson-validations')
 const polygonsMock = require('./mocks/polygons')
 const featuresMock = require('./mocks/features')
 const coordinatesMock = require('./mocks/coordinates')
+const pointsMock = require('./mocks/points')
 
 describe('GeoJson Validations tests', () => {
     describe('Coordinate validations tests', () => {
@@ -26,7 +27,7 @@ describe('GeoJson Validations tests', () => {
             expect(() => GeoJsonValidations.isValidCoordinate([5])).toThrow('A GeoJson Coordinate must be an Array with two values for longitude and latitude respectively')
         })
     })
-    describe('Coordinate validations tests', () => {
+    describe('Polygon validations tests', () => {
         test('should return true to a valid Polygon', () => {
             expect(GeoJsonValidations.isValidPolygon(polygonsMock.polygonWithoutLoop)).toBe(true)
         })
@@ -49,6 +50,27 @@ describe('GeoJson Validations tests', () => {
 
         test('should throw error by invalid count of Coordinates inside the Polygon "coordinates" property', () => {
             expect(() => GeoJsonValidations.isValidPolygon(polygonsMock.polygonWithInvalidCoordinatesQuantity)).toThrow('A GeoJson Coordinates inside the Polygon \"coordinates\" property must be an Array with at least three coordinates.')
+        })
+    })
+    describe('Point validations tests', () => {
+        test('should return true to a valid Point', () => {
+            expect(GeoJsonValidations.isValidPoint(pointsMock.validPoints[0])).toBe(true)
+        })
+
+        test('should throw error by empty Point', () => {
+            expect(() => GeoJsonValidations.isValidPoint()).toThrow('A GeoJson Point must be passed to the method.')
+        })
+
+        test('should throw error by Point not being a Object', () => {
+            expect(() => GeoJsonValidations.isValidPoint([])).toThrow('A GeoJson Point must be a Object with properties \"type\" and \"coordinates\".')
+        })
+
+        test('should throw error by Point doesn\'t having "type" property with value "Point"', () => {
+            expect(() => GeoJsonValidations.isValidPoint(featuresMock.validFeature)).toThrow('A GeoJson Point must have \"type\" property with \"Point\" value.')
+        })
+
+        test('should throw error by invalid Point "coordinates" property', () => {
+            expect(() => GeoJsonValidations.isValidPoint(pointsMock.pointWithInvalidCoordinates)).toThrow('Longitude of a GeoJson Coordinate must have values between -180 and 180.')
         })
     })
 })
