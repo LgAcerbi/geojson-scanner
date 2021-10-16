@@ -23,6 +23,22 @@ class GeoJsonValidations {
         return true
 
     }
+
+    static isValidPoint(point) {
+        if (!point) {
+            throw new Error('A GeoJson Point must be passed to the method.')
+        }
+        if (Object.getPrototypeOf(point) !== Object.prototype) {
+            throw new Error("A GeoJson Point must be a Object with properties \"type\" and \"coordinates\".")
+        }
+        if (point.type !== 'Point') {
+            throw new Error("A GeoJson Point must have \"type\" property with \"Point\" value.")
+        }
+        GeoJsonValidations.isValidCoordinate(point.coordinates)
+
+        return true
+    }
+
     static isValidCoordinate(coordinate) {
         if (!coordinate) {
             throw new Error('A GeoJson Coordinate must be passed to the method.')
