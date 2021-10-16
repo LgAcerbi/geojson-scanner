@@ -1,6 +1,6 @@
 {
   "name": "geojson-scanner",
-  "version": "1.3.2",
+  "version": "1.4.2",
   "description": "Library to scan possible issues in a GeoJson",
   "main": "index.js",
   "scripts": {
