@@ -6,7 +6,7 @@ class GeoJsonScanner {
         try {
             return GeoJsonValidations.isValidPolygon(polygon)
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
             return false
         }
     }
@@ -14,7 +14,7 @@ class GeoJsonScanner {
         try {
             return GeoJsonValidations.isValidCoordinate(coordinate)
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
             return false
         }
     }
@@ -35,6 +35,21 @@ class GeoJsonScanner {
             }
         })
         return foundLoop
+    }
+    static calculateDistanceBetweenPoints(point1, point2) {
+        GeoJsonValidations.isValidPoint(point1)
+        GeoJsonValidations.isValidPoint(point2)
+
+        const parsedPoint1 = {
+            lat: point1.coordinates[1],
+            long: point1.coordinates[0]
+        }
+        const parsedPoint2 = {
+            lat: point2.coordinates[1],
+            long: point2.coordinates[0]
+        }
+
+        return GeoMath.calculateDistanceBetweenPointsInMetres(parsedPoint1, parsedPoint2)
     }
 }
 
