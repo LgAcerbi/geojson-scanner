@@ -12,8 +12,8 @@ class GeoJsonValidations {
         if (!polygon.coordinates.length || polygon.coordinates.length !== 1) {
             throw new Error("A GeoJson Polygon \"coordinates\" property must be an Array with one Array of coordinates inside.")
         }
-        if (!polygon.coordinates[0].length || polygon.coordinates[0].length <= 2) {
-            throw new Error("A GeoJson Coordinates inside the Polygon \"coordinates\" property must be an Array with at least three coordinates.")
+        if (!polygon.coordinates[0].length || polygon.coordinates[0].length <= 3) {
+            throw new Error("A GeoJson Coordinates inside the Polygon \"coordinates\" property must be an Array with at least four coordinates.")
         }
 
         polygon.coordinates[0].forEach(coordinate => {
