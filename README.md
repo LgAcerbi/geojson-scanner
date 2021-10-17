@@ -43,7 +43,7 @@ const polygon = {
         ]
     }
 
-GeoJsonScanner.isValidPolygon(polygon) // Logs true
+console.log(GeoJsonScanner.isValidPolygon(polygon)) // Logs true
 
 ```
 
