@@ -15,7 +15,7 @@ Import GeoJson-Scanner in your file:
 const GeoJsonScanner = require('geojson-scanner')
 ```
 
-Then you have access to all methods, let's validate if this object is a valid GeoJson Polygon
+Then you have access to all methods, let's validate if this object is a valid GeoJson Polygon:
 ```javascript
 const GeoJsonScanner = require('geojson-scanner')
 
