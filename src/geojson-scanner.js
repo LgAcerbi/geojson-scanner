@@ -1,4 +1,5 @@
 const GeoMath = require("./helpers/geo-math");
+const GeoBuilder = require("./helpers/geo-builder");
 const GeoJsonValidations = require("./helpers/geojson-validations");
 
 class GeoJsonScanner {
@@ -24,19 +25,12 @@ class GeoJsonScanner {
     const coordinates = polygon.coordinates[0];
 
     if (coordinates.length > 4) {
-      const lines = coordinates
-        .map((coordinate, index) => {
-          const pointA = coordinate;
-          const pointB = coordinates[index + 1];
-
-          return { pointA, pointB };
-        })
-        .pop();
-
+      const lines = GeoBuilder.createLinesFromCoordinates(coordinates);
       return lines.reduce((prev, line) => {
-        return lines.some((otherLine) => {
-          return GeoMath.findIntersectionBetweenLines(line, otherLine) || prev;
-        });
+        return lines.some(
+          (otherLine) =>
+            GeoMath.findIntersectionBetweenLines(line, otherLine) || prev
+        );
       }, false);
     }
 
