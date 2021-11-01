@@ -1,3 +1,3 @@
-const GeoJsonScanner = require('./src/geojson-scanner')
+const GeoJsonScanner = require("./src/geojson-scanner");
 
-module.exports = GeoJsonScanner
+module.exports = GeoJsonScanner;
